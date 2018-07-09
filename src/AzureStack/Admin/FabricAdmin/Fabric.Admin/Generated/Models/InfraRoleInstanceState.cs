@@ -10,15 +10,100 @@
 
 namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
 {
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Defines values for InfraRoleInstanceState.
     /// </summary>
-    public static class InfraRoleInstanceState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(InfraRoleInstanceStateConverter))]
+    public struct InfraRoleInstanceState : System.IEquatable<InfraRoleInstanceState>
     {
-        public const string Stopped = "Stopped";
-        public const string Starting = "Starting";
-        public const string Running = "Running";
-        public const string Stopping = "Stopping";
+        private InfraRoleInstanceState(string underlyingValue)
+        {
+            UnderlyingValue=underlyingValue;
+        }
+
+        public static readonly InfraRoleInstanceState Stopped = "Stopped";
+
+        public static readonly InfraRoleInstanceState Starting = "Starting";
+
+        public static readonly InfraRoleInstanceState Running = "Running";
+
+        public static readonly InfraRoleInstanceState Stopping = "Stopping";
+
+
+        /// <summary>
+        /// Underlying value of enum InfraRoleInstanceState
+        /// </summary>
+        private readonly string UnderlyingValue;
+
+        /// <summary>
+        /// Returns string representation for InfraRoleInstanceState
+        /// </summary>
+        public override string ToString()
+        {
+            return UnderlyingValue.ToString();
+        }
+
+        /// <summary>
+        /// Compares enums of type InfraRoleInstanceState
+        /// </summary>
+        public bool Equals(InfraRoleInstanceState e)
+        {
+            return UnderlyingValue.Equals(e.UnderlyingValue);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert string to InfraRoleInstanceState
+        /// </summary>
+        public static implicit operator InfraRoleInstanceState(string value)
+        {
+            return new InfraRoleInstanceState(value);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert InfraRoleInstanceState to string
+        /// </summary>
+        public static implicit operator string(InfraRoleInstanceState e)
+        {
+            return e.UnderlyingValue;
+        }
+
+        /// <summary>
+        /// Overriding == operator for enum InfraRoleInstanceState
+        /// </summary>
+        public static bool operator == (InfraRoleInstanceState e1, InfraRoleInstanceState e2)
+        {
+            return e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overriding != operator for enum InfraRoleInstanceState
+        /// </summary>
+        public static bool operator != (InfraRoleInstanceState e1, InfraRoleInstanceState e2)
+        {
+            return !e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overrides Equals operator for InfraRoleInstanceState
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            return obj is InfraRoleInstanceState && Equals((InfraRoleInstanceState)obj);
+        }
+
+        /// <summary>
+        /// Returns for hashCode InfraRoleInstanceState
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return UnderlyingValue.GetHashCode();
+        }
+
     }
 }

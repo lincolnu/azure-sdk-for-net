@@ -164,6 +164,49 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             }
 
             /// <summary>
+            /// Create a scale unit.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='scaleUnit'>
+            /// Name of the scale units.
+            /// </param>
+            /// <param name='inputJson'>
+            /// The json content expected to describe a new cluster.
+            /// </param>
+            public static void Create(this IScaleUnitsOperations operations, string location, string scaleUnit, CreateFromJsonParameters inputJson)
+            {
+                operations.CreateAsync(location, scaleUnit, inputJson).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a scale unit.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='scaleUnit'>
+            /// Name of the scale units.
+            /// </param>
+            /// <param name='inputJson'>
+            /// The json content expected to describe a new cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task CreateAsync(this IScaleUnitsOperations operations, string location, string scaleUnit, CreateFromJsonParameters inputJson, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.CreateWithHttpMessagesAsync(location, scaleUnit, inputJson, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Add a new scale unit.
             /// </summary>
             /// <param name='operations'>
@@ -210,6 +253,49 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             public static async Task BeginScaleOutAsync(this IScaleUnitsOperations operations, string resourceGroupName, string location, string scaleUnit, ScaleOutScaleUnitParametersList nodeList, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginScaleOutWithHttpMessagesAsync(resourceGroupName, location, scaleUnit, nodeList, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create a scale unit.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='scaleUnit'>
+            /// Name of the scale units.
+            /// </param>
+            /// <param name='inputJson'>
+            /// The json content expected to describe a new cluster.
+            /// </param>
+            public static void BeginCreate(this IScaleUnitsOperations operations, string location, string scaleUnit, CreateFromJsonParameters inputJson)
+            {
+                operations.BeginCreateAsync(location, scaleUnit, inputJson).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a scale unit.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='scaleUnit'>
+            /// Name of the scale units.
+            /// </param>
+            /// <param name='inputJson'>
+            /// The json content expected to describe a new cluster.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginCreateAsync(this IScaleUnitsOperations operations, string location, string scaleUnit, CreateFromJsonParameters inputJson, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginCreateWithHttpMessagesAsync(location, scaleUnit, inputJson, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

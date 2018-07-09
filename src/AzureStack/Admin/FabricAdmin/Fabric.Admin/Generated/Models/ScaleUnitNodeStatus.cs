@@ -10,14 +10,98 @@
 
 namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
 {
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Defines values for ScaleUnitNodeStatus.
     /// </summary>
-    public static class ScaleUnitNodeStatus
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(ScaleUnitNodeStatusConverter))]
+    public struct ScaleUnitNodeStatus : System.IEquatable<ScaleUnitNodeStatus>
     {
-        public const string Running = "Running";
-        public const string Maintenance = "Maintenance";
-        public const string Stopped = "Stopped";
+        private ScaleUnitNodeStatus(string underlyingValue)
+        {
+            UnderlyingValue=underlyingValue;
+        }
+
+        public static readonly ScaleUnitNodeStatus Running = "Running";
+
+        public static readonly ScaleUnitNodeStatus Maintenance = "Maintenance";
+
+        public static readonly ScaleUnitNodeStatus Stopped = "Stopped";
+
+
+        /// <summary>
+        /// Underlying value of enum ScaleUnitNodeStatus
+        /// </summary>
+        private readonly string UnderlyingValue;
+
+        /// <summary>
+        /// Returns string representation for ScaleUnitNodeStatus
+        /// </summary>
+        public override string ToString()
+        {
+            return UnderlyingValue.ToString();
+        }
+
+        /// <summary>
+        /// Compares enums of type ScaleUnitNodeStatus
+        /// </summary>
+        public bool Equals(ScaleUnitNodeStatus e)
+        {
+            return UnderlyingValue.Equals(e.UnderlyingValue);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert string to ScaleUnitNodeStatus
+        /// </summary>
+        public static implicit operator ScaleUnitNodeStatus(string value)
+        {
+            return new ScaleUnitNodeStatus(value);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert ScaleUnitNodeStatus to string
+        /// </summary>
+        public static implicit operator string(ScaleUnitNodeStatus e)
+        {
+            return e.UnderlyingValue;
+        }
+
+        /// <summary>
+        /// Overriding == operator for enum ScaleUnitNodeStatus
+        /// </summary>
+        public static bool operator == (ScaleUnitNodeStatus e1, ScaleUnitNodeStatus e2)
+        {
+            return e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overriding != operator for enum ScaleUnitNodeStatus
+        /// </summary>
+        public static bool operator != (ScaleUnitNodeStatus e1, ScaleUnitNodeStatus e2)
+        {
+            return !e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overrides Equals operator for ScaleUnitNodeStatus
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            return obj is ScaleUnitNodeStatus && Equals((ScaleUnitNodeStatus)obj);
+        }
+
+        /// <summary>
+        /// Returns for hashCode ScaleUnitNodeStatus
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return UnderlyingValue.GetHashCode();
+        }
+
     }
 }

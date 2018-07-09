@@ -10,15 +10,100 @@
 
 namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
 {
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Defines values for PowerState.
     /// </summary>
-    public static class PowerState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(PowerStateConverter))]
+    public struct PowerState : System.IEquatable<PowerState>
     {
-        public const string Stopped = "Stopped";
-        public const string Starting = "Starting";
-        public const string Running = "Running";
-        public const string Stopping = "Stopping";
+        private PowerState(string underlyingValue)
+        {
+            UnderlyingValue=underlyingValue;
+        }
+
+        public static readonly PowerState Stopped = "Stopped";
+
+        public static readonly PowerState Starting = "Starting";
+
+        public static readonly PowerState Running = "Running";
+
+        public static readonly PowerState Stopping = "Stopping";
+
+
+        /// <summary>
+        /// Underlying value of enum PowerState
+        /// </summary>
+        private readonly string UnderlyingValue;
+
+        /// <summary>
+        /// Returns string representation for PowerState
+        /// </summary>
+        public override string ToString()
+        {
+            return UnderlyingValue.ToString();
+        }
+
+        /// <summary>
+        /// Compares enums of type PowerState
+        /// </summary>
+        public bool Equals(PowerState e)
+        {
+            return UnderlyingValue.Equals(e.UnderlyingValue);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert string to PowerState
+        /// </summary>
+        public static implicit operator PowerState(string value)
+        {
+            return new PowerState(value);
+        }
+
+        /// <summary>
+        /// Implicit operator to convert PowerState to string
+        /// </summary>
+        public static implicit operator string(PowerState e)
+        {
+            return e.UnderlyingValue;
+        }
+
+        /// <summary>
+        /// Overriding == operator for enum PowerState
+        /// </summary>
+        public static bool operator == (PowerState e1, PowerState e2)
+        {
+            return e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overriding != operator for enum PowerState
+        /// </summary>
+        public static bool operator != (PowerState e1, PowerState e2)
+        {
+            return !e2.Equals(e1);
+        }
+
+        /// <summary>
+        /// Overrides Equals operator for PowerState
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            return obj is PowerState && Equals((PowerState)obj);
+        }
+
+        /// <summary>
+        /// Returns for hashCode PowerState
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return UnderlyingValue.GetHashCode();
+        }
+
     }
 }

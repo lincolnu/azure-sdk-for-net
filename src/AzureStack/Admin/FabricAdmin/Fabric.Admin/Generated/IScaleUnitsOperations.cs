@@ -110,6 +110,31 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// </exception>
         Task<AzureOperationResponse<IPage<ScaleUnit>>> ListWithHttpMessagesAsync(string resourceGroupName, string location, ODataQuery<ScaleUnit> odataQuery = default(ODataQuery<ScaleUnit>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Create a scale unit.
+        /// </summary>
+        /// <param name='location'>
+        /// Location of the resource.
+        /// </param>
+        /// <param name='scaleUnit'>
+        /// Name of the scale units.
+        /// </param>
+        /// <param name='inputJson'>
+        /// The json content expected to describe a new cluster.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string location, string scaleUnit, CreateFromJsonParameters inputJson, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Add a new scale unit.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -138,6 +163,31 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginScaleOutWithHttpMessagesAsync(string resourceGroupName, string location, string scaleUnit, ScaleOutScaleUnitParametersList nodeList, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create a scale unit.
+        /// </summary>
+        /// <param name='location'>
+        /// Location of the resource.
+        /// </param>
+        /// <param name='scaleUnit'>
+        /// Name of the scale units.
+        /// </param>
+        /// <param name='inputJson'>
+        /// The json content expected to describe a new cluster.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string location, string scaleUnit, CreateFromJsonParameters inputJson, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns a list of all scale units at a location.
         /// </summary>

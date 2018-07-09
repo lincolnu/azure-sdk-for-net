@@ -61,7 +61,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// <param name="biosVersion">BIOS version of the physical
         /// machine.</param>
         /// <param name="capacity">Capacity of the physical machine.</param>
-        public ScaleUnitNode(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string scaleUnitNodeStatus = default(string), string powerState = default(string), string bmcAddress = default(string), string scaleUnitName = default(string), string scaleUnitUri = default(string), bool? canPowerOff = default(bool?), string vendor = default(string), string model = default(string), string serialNumber = default(string), string biosVersion = default(string), ScaleUnitCapacity capacity = default(ScaleUnitCapacity))
+        public ScaleUnitNode(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ScaleUnitNodeStatus? scaleUnitNodeStatus = default(ScaleUnitNodeStatus?), PowerState? powerState = default(PowerState?), string bmcAddress = default(string), string scaleUnitName = default(string), string scaleUnitUri = default(string), bool? canPowerOff = default(bool?), string vendor = default(string), string model = default(string), string serialNumber = default(string), string biosVersion = default(string), ScaleUnitCapacity capacity = default(ScaleUnitCapacity))
             : base(id, name, type, location, tags)
         {
             ScaleUnitNodeStatus = scaleUnitNodeStatus;
@@ -88,14 +88,14 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// include: 'Running', 'Maintenance', 'Stopped'
         /// </summary>
         [JsonProperty(PropertyName = "properties.scaleUnitNodeStatus")]
-        public string ScaleUnitNodeStatus { get; set; }
+        public ScaleUnitNodeStatus? ScaleUnitNodeStatus { get; set; }
 
         /// <summary>
         /// Gets or sets powerState of the physical machine. Possible values
         /// include: 'Stopped', 'Starting', 'Running', 'Stopping'
         /// </summary>
         [JsonProperty(PropertyName = "properties.powerState")]
-        public string PowerState { get; set; }
+        public PowerState? PowerState { get; set; }
 
         /// <summary>
         /// Gets or sets BMC address of the physical machine.

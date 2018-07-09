@@ -51,7 +51,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// <param name="state">The current state of the virtual machine.
         /// Possible values include: 'Stopped', 'Starting', 'Running',
         /// 'Stopping'</param>
-        public InfraRoleInstance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string scaleUnit = default(string), string scaleUnitNode = default(string), InfraRoleInstanceSize size = default(InfraRoleInstanceSize), string state = default(string))
+        public InfraRoleInstance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string scaleUnit = default(string), string scaleUnitNode = default(string), InfraRoleInstanceSize size = default(InfraRoleInstanceSize), InfraRoleInstanceState? state = default(InfraRoleInstanceState?))
             : base(id, name, type, location, tags)
         {
             ScaleUnit = scaleUnit;
@@ -90,7 +90,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// values include: 'Stopped', 'Starting', 'Running', 'Stopping'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; set; }
+        public InfraRoleInstanceState? State { get; set; }
 
     }
 }

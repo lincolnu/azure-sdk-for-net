@@ -55,7 +55,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// cluster.</param>
         /// <param name="isMultiNode">Denotes if more than one node in
         /// cluster.</param>
-        public ScaleUnit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string scaleUnitType = default(string), int? logicalFaultDomain = default(int?), IList<string> nodes = default(IList<string>), string state = default(string), string model = default(string), ScaleUnitCapacity totalCapacity = default(ScaleUnitCapacity), bool? isMultiNode = default(bool?))
+        public ScaleUnit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ScaleUnitType? scaleUnitType = default(ScaleUnitType?), int? logicalFaultDomain = default(int?), IList<string> nodes = default(IList<string>), ScaleUnitState? state = default(ScaleUnitState?), string model = default(string), ScaleUnitCapacity totalCapacity = default(ScaleUnitCapacity), bool? isMultiNode = default(bool?))
             : base(id, name, type, location, tags)
         {
             ScaleUnitType = scaleUnitType;
@@ -78,7 +78,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// 'ComputeOnly', 'StorageOnly', 'HyperConverged'
         /// </summary>
         [JsonProperty(PropertyName = "properties.scaleUnitType")]
-        public string ScaleUnitType { get; set; }
+        public ScaleUnitType? ScaleUnitType { get; set; }
 
         /// <summary>
         /// Gets or sets fault domain name of the cluster.
@@ -97,7 +97,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// 'Unknown', 'Creating', 'Running', 'Upgrading', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; set; }
+        public ScaleUnitState? State { get; set; }
 
         /// <summary>
         /// Gets or sets model of the servers in the cluster.
