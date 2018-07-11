@@ -16,25 +16,23 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
     /// <summary>
     /// Input data that allows for adding a scale unit node.
     /// </summary>
-    public partial class CreateScaleUnitFromJsonNodeParameters
+    public partial class ScaleUnitNodeParameters
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateScaleUnitFromJsonNodeParameters class.
+        /// Initializes a new instance of the ScaleUnitNodeParameters class.
         /// </summary>
-        public CreateScaleUnitFromJsonNodeParameters()
+        public ScaleUnitNodeParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateScaleUnitFromJsonNodeParameters class.
+        /// Initializes a new instance of the ScaleUnitNodeParameters class.
         /// </summary>
         /// <param name="name">Computer name of the physical machine.</param>
         /// <param name="bMCIPAddress">Bmc address of the physical
         /// machine.</param>
-        public CreateScaleUnitFromJsonNodeParameters(string name = default(string), string bMCIPAddress = default(string))
+        public ScaleUnitNodeParameters(string name = default(string), string bMCIPAddress = default(string))
         {
             Name = name;
             BMCIPAddress = bMCIPAddress;

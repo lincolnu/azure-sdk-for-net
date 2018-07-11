@@ -18,24 +18,22 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
     /// <summary>
     /// Input data that allows for adding a scale unit node.
     /// </summary>
-    public partial class CreateScaleUnitFromJsonNetworkDefinition
+    public partial class ScaleUnitNetworkDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateScaleUnitFromJsonNetworkDefinition class.
+        /// Initializes a new instance of the ScaleUnitNetworkDefinition class.
         /// </summary>
-        public CreateScaleUnitFromJsonNetworkDefinition()
+        public ScaleUnitNetworkDefinition()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// CreateScaleUnitFromJsonNetworkDefinition class.
+        /// Initializes a new instance of the ScaleUnitNetworkDefinition class.
         /// </summary>
         /// <param name="subnet">Top level storage IP subnet.</param>
         /// <param name="vlanId">Top level storage IP subnet Vlan Id.</param>
-        public CreateScaleUnitFromJsonNetworkDefinition(IList<string> subnet = default(IList<string>), IList<string> vlanId = default(IList<string>))
+        public ScaleUnitNetworkDefinition(IList<string> subnet = default(IList<string>), IList<string> vlanId = default(IList<string>))
         {
             Subnet = subnet;
             VlanId = vlanId;

@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// <param name="tORSwitchBGPPeerIP">TOR switch IP.</param>
         /// <param name="physicalNodes">The list of nodes.</param>
         /// <param name="netQosPriority">QoS policy.</param>
-        public CreateScaleUnitParameters(string tORSwitchBGPASN = default(string), string softwareBGPASN = default(string), IList<string> tORSwitchBGPPeerIP = default(IList<string>), CreateScaleUnitFromJsonNetworkDefinition infrastructureNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), CreateScaleUnitFromJsonNetworkDefinition storageNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), IList<CreateScaleUnitFromJsonNodeParameters> physicalNodes = default(IList<CreateScaleUnitFromJsonNodeParameters>), int? netQosPriority = default(int?))
+        public CreateScaleUnitParameters(string tORSwitchBGPASN = default(string), string softwareBGPASN = default(string), IList<string> tORSwitchBGPPeerIP = default(IList<string>), ScaleUnitNetworkDefinition infrastructureNetwork = default(ScaleUnitNetworkDefinition), ScaleUnitNetworkDefinition storageNetwork = default(ScaleUnitNetworkDefinition), IList<ScaleUnitNodeParameters> physicalNodes = default(IList<ScaleUnitNodeParameters>), int? netQosPriority = default(int?))
         {
             TORSwitchBGPASN = tORSwitchBGPASN;
             SoftwareBGPASN = softwareBGPASN;
@@ -74,18 +74,18 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "InfrastructureNetwork")]
-        public CreateScaleUnitFromJsonNetworkDefinition InfrastructureNetwork { get; set; }
+        public ScaleUnitNetworkDefinition InfrastructureNetwork { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "StorageNetwork")]
-        public CreateScaleUnitFromJsonNetworkDefinition StorageNetwork { get; set; }
+        public ScaleUnitNetworkDefinition StorageNetwork { get; set; }
 
         /// <summary>
         /// Gets or sets the list of nodes.
         /// </summary>
         [JsonProperty(PropertyName = "physicalNodes")]
-        public IList<CreateScaleUnitFromJsonNodeParameters> PhysicalNodes { get; set; }
+        public IList<ScaleUnitNodeParameters> PhysicalNodes { get; set; }
 
         /// <summary>
         /// Gets or sets qoS policy.
