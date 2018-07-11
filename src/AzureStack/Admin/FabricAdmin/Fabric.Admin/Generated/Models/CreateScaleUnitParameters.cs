@@ -18,25 +18,25 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin.Models
     /// <summary>
     /// Parameters that fully define a new cluster to be created.
     /// </summary>
-    public partial class CreateFromJsonParameters
+    public partial class CreateScaleUnitParameters
     {
         /// <summary>
-        /// Initializes a new instance of the CreateFromJsonParameters class.
+        /// Initializes a new instance of the CreateScaleUnitParameters class.
         /// </summary>
-        public CreateFromJsonParameters()
+        public CreateScaleUnitParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CreateFromJsonParameters class.
+        /// Initializes a new instance of the CreateScaleUnitParameters class.
         /// </summary>
         /// <param name="tORSwitchBGPASN">TOR switch ASN.</param>
         /// <param name="softwareBGPASN">Software ASN.</param>
         /// <param name="tORSwitchBGPPeerIP">TOR switch IP.</param>
         /// <param name="physicalNodes">The list of nodes.</param>
         /// <param name="netQosPriority">QoS policy.</param>
-        public CreateFromJsonParameters(string tORSwitchBGPASN = default(string), string softwareBGPASN = default(string), IList<string> tORSwitchBGPPeerIP = default(IList<string>), CreateScaleUnitFromJsonNetworkDefinition infrastructureNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), CreateScaleUnitFromJsonNetworkDefinition storageNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), IList<CreateScaleUnitFromJsonNodeParameters> physicalNodes = default(IList<CreateScaleUnitFromJsonNodeParameters>), int? netQosPriority = default(int?))
+        public CreateScaleUnitParameters(string tORSwitchBGPASN = default(string), string softwareBGPASN = default(string), IList<string> tORSwitchBGPPeerIP = default(IList<string>), CreateScaleUnitFromJsonNetworkDefinition infrastructureNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), CreateScaleUnitFromJsonNetworkDefinition storageNetwork = default(CreateScaleUnitFromJsonNetworkDefinition), IList<CreateScaleUnitFromJsonNodeParameters> physicalNodes = default(IList<CreateScaleUnitFromJsonNodeParameters>), int? netQosPriority = default(int?))
         {
             TORSwitchBGPASN = tORSwitchBGPASN;
             SoftwareBGPASN = softwareBGPASN;

@@ -501,7 +501,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <param name='scaleUnit'>
         /// Name of the scale units.
         /// </param>
-        /// <param name='inputJson'>
+        /// <param name='inputScaleUnitData'>
         /// The json content expected to describe a new cluster.
         /// </param>
         /// <param name='customHeaders'>
@@ -510,10 +510,10 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string location, string scaleUnit, CreateFromJsonParameters inputJson, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string location, string scaleUnit, CreateScaleUnitParameters inputScaleUnitData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginCreateWithHttpMessagesAsync(location, scaleUnit, inputJson, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginCreateWithHttpMessagesAsync(location, scaleUnit, inputScaleUnitData, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -724,7 +724,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <param name='scaleUnit'>
         /// Name of the scale units.
         /// </param>
-        /// <param name='inputJson'>
+        /// <param name='inputScaleUnitData'>
         /// The json content expected to describe a new cluster.
         /// </param>
         /// <param name='customHeaders'>
@@ -745,7 +745,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string location, string scaleUnit, CreateFromJsonParameters inputJson, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string location, string scaleUnit, CreateScaleUnitParameters inputScaleUnitData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -759,9 +759,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scaleUnit");
             }
-            if (inputJson == null)
+            if (inputScaleUnitData == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "inputJson");
+                throw new ValidationException(ValidationRules.CannotBeNull, "inputScaleUnitData");
             }
             if (Client.ApiVersion == null)
             {
@@ -776,7 +776,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("scaleUnit", scaleUnit);
-                tracingParameters.Add("inputJson", inputJson);
+                tracingParameters.Add("inputScaleUnitData", inputScaleUnitData);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
             }
@@ -829,9 +829,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
 
             // Serialize Request
             string _requestContent = null;
-            if(inputJson != null)
+            if(inputScaleUnitData != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(inputJson, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(inputScaleUnitData, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
