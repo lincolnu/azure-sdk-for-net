@@ -47,16 +47,16 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// Client API Version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// Subscription credentials that uniquely identify Microsoft Azure
         /// subscription. The subscription ID forms part of the URI for every service
         /// call.
         /// </summary>
         public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Client API Version.
-        /// </summary>
-        public string ApiVersion { get; private set; }
 
         /// <summary>
         /// Gets or sets the preferred language for the response.
@@ -74,6 +74,11 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets the IRemediateOperations.
+        /// </summary>
+        public virtual IRemediateOperations Remediate { get; private set; }
 
         /// <summary>
         /// Gets the IFabricOperations.
@@ -361,6 +366,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// </summary>
         private void Initialize()
         {
+            Remediate = new RemediateOperations(this);
             Fabric = new FabricOperations(this);
             EdgeGateways = new EdgeGatewaysOperations(this);
             EdgeGatewayPools = new EdgeGatewayPoolsOperations(this);
