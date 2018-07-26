@@ -19,9 +19,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RemediateOperations operations.
+    /// AlertsOperations operations.
     /// </summary>
-    public partial interface IRemediateOperations
+    public partial interface IAlertsOperations
     {
         /// <summary>
         /// Remediate an alert.
@@ -44,7 +44,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> AlertWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> FixWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Remediate an alert.
         /// </summary>
@@ -66,6 +66,6 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginAlertWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginFixWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

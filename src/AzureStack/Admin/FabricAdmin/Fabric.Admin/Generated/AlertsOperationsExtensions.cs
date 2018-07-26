@@ -17,9 +17,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for RemediateOperations.
+    /// Extension methods for AlertsOperations.
     /// </summary>
-    public static partial class RemediateOperationsExtensions
+    public static partial class AlertsOperationsExtensions
     {
             /// <summary>
             /// Remediate an alert.
@@ -33,9 +33,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             /// <param name='alertId'>
             /// Id of the alert.
             /// </param>
-            public static void Alert(this IRemediateOperations operations, string location, string alertId)
+            public static void Fix(this IAlertsOperations operations, string location, string alertId)
             {
-                operations.AlertAsync(location, alertId).GetAwaiter().GetResult();
+                operations.FixAsync(location, alertId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,9 +53,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task AlertAsync(this IRemediateOperations operations, string location, string alertId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task FixAsync(this IAlertsOperations operations, string location, string alertId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.AlertWithHttpMessagesAsync(location, alertId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.FixWithHttpMessagesAsync(location, alertId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -70,9 +70,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             /// <param name='alertId'>
             /// Id of the alert.
             /// </param>
-            public static void BeginAlert(this IRemediateOperations operations, string location, string alertId)
+            public static void BeginFix(this IAlertsOperations operations, string location, string alertId)
             {
-                operations.BeginAlertAsync(location, alertId).GetAwaiter().GetResult();
+                operations.BeginFixAsync(location, alertId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -90,9 +90,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginAlertAsync(this IRemediateOperations operations, string location, string alertId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginFixAsync(this IAlertsOperations operations, string location, string alertId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginAlertWithHttpMessagesAsync(location, alertId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginFixWithHttpMessagesAsync(location, alertId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

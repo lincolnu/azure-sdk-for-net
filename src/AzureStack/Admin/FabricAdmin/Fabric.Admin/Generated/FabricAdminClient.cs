@@ -161,9 +161,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         public virtual ISlbMuxInstancesOperations SlbMuxInstances { get; private set; }
 
         /// <summary>
-        /// Gets the IRemediateOperations.
+        /// Gets the IAlertsOperations.
         /// </summary>
-        public virtual IRemediateOperations Remediate { get; private set; }
+        public virtual IAlertsOperations Alerts { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the FabricAdminClient class.
@@ -383,7 +383,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
             ScaleUnits = new ScaleUnitsOperations(this);
             ScaleUnitNodes = new ScaleUnitNodesOperations(this);
             SlbMuxInstances = new SlbMuxInstancesOperations(this);
-            Remediate = new RemediateOperations(this);
+            Alerts = new AlertsOperations(this);
             BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
             ApiVersion = "2016-05-01";
             AcceptLanguage = "en-US";

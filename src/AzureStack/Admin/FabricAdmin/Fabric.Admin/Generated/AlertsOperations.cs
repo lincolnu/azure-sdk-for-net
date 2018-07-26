@@ -23,12 +23,12 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RemediateOperations operations.
+    /// AlertsOperations operations.
     /// </summary>
-    internal partial class RemediateOperations : IServiceOperations<FabricAdminClient>, IRemediateOperations
+    internal partial class AlertsOperations : IServiceOperations<FabricAdminClient>, IAlertsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the RemediateOperations class.
+        /// Initializes a new instance of the AlertsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal RemediateOperations(FabricAdminClient client)
+        internal AlertsOperations(FabricAdminClient client)
         {
             if (client == null)
             {
@@ -65,10 +65,10 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> AlertWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> FixWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginAlertWithHttpMessagesAsync(location, alertId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginFixWithHttpMessagesAsync(location, alertId, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginAlertWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginFixWithHttpMessagesAsync(string location, string alertId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -127,7 +127,7 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("alertId", alertId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "BeginAlert", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginFix", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;

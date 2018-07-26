@@ -156,9 +156,9 @@ namespace Microsoft.AzureStack.Management.Fabric.Admin
         ISlbMuxInstancesOperations SlbMuxInstances { get; }
 
         /// <summary>
-        /// Gets the IRemediateOperations.
+        /// Gets the IAlertsOperations.
         /// </summary>
-        IRemediateOperations Remediate { get; }
+        IAlertsOperations Alerts { get; }
 
     }
 }
